@@ -6,6 +6,7 @@ import Loader from '../loader/loader';
 import AppRovedtModal from './approved-modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductModal } from '../../reducer/event';
+import { ProductImg } from '../img-blurhash';
 const AppRoved = () => {
     const { product } = useSelector(state => state.event)
     const [products, setProducts] = useState([])
@@ -61,7 +62,7 @@ const AppRoved = () => {
                                 <img src={pointgreen} alt="green" />
                                 <h1 className='text-[#067647] text-[14px] font-[500]'>Tasdiqlangan</h1>
                             </div>
-                            <img className='w-full h-[240px] object-cover' src={item?.photoUrl ? item?.photoUrl : "https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"} alt="img" />
+                            <ProductImg src={ item?.photoUrl ? item?.photoUrl : "https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"}/>
                             <div className="card-content h-full p-[20px] flex flex-col">
                                 <div className="location flex justify-start items-center gap-[8px]">
                                     <img src={location} alt="location" />

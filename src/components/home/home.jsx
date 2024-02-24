@@ -8,6 +8,7 @@ import ComplaintModal from "./report-modal";
 import axios from "axios";
 import Loader from "../loader/loader";
 import ProductReportModal from "./report-modal";
+import { ProductImg } from "../img-blurhash";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -67,11 +68,7 @@ const Home = () => {
                                         Tasdiqlanmagan
                                     </h1>
                                 </div>
-                                <img
-                                    className="h-[240px] object-cover"
-                                    src={item?.photoUrl}
-                                    alt="img"
-                                />
+                                <ProductImg src={item?.photoUrl} />
                                 <div className="card-content h-full p-[20px] flex flex-col">
                                     <div className="location flex justify-start items-center gap-[8px]">
                                         <img src={location} alt="location" />
