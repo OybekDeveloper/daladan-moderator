@@ -1,11 +1,10 @@
 import { Dialog, Transition } from "@headlessui/react";
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ProductModal, ReportModal } from "../../reducer/event";
+import { ProductModal } from "../../reducer/event";
 import { close } from "../imgs";
 import axios from "axios";
-import { toast } from "react-toastify";
-const ConfirmationModal = () => {
+const AppRovedModal = () => {
     const { product, productId } = useSelector((state) => state.event);
     const dispatch = useDispatch();
     const [products, setProducts] = useState();
@@ -13,10 +12,6 @@ const ConfirmationModal = () => {
         dispatch(ProductModal());
     };
 
-    const handleComplaint = () => {
-        dispatch(ProductModal());
-        dispatch(ReportModal(productId));
-    };
     const imgContainerStyle = {
         scrollbarWidth: "thin",
         scrollbarColor: "transparent transparent",
@@ -24,36 +19,6 @@ const ConfirmationModal = () => {
             display: "none"
         },
     };
-    const handleCheckProduct = () => {
-        const fetchData = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                const response = await axios({
-                    method: "PUT",
-                    url: `https://avtowatt.uz/api/v1/products/${productId}`,
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json",
-                    },
-                });
-                dispatch(ProductModal());
-                toast.success("Successfully verified!", {
-                    position: "top-right",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                });
-                console.log(response);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchData();
-    }
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -67,6 +32,7 @@ const ConfirmationModal = () => {
                     },
                 });
                 setProducts(response.data);
+                console.log(response.data);
             } catch (err) {
                 console.log(err);
             }
@@ -181,7 +147,7 @@ const ConfirmationModal = () => {
                                             <input
                                                 className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
-                                                placeholder={`${products?.weight / 1000} tonna`}
+                                                placeholder={`${products?.weight} tonna`}
                                                 disabled
                                             />
                                         </div>
@@ -230,7 +196,7 @@ const ConfirmationModal = () => {
                                             />
                                         </div>
                                     </section>
-                                    <section className="flex justify-between mt-[20px]">
+                                    <section className="flex justify-between mt-[20px] mb-[20px]">
                                         <div className="w-[40%] flex flex-col justify-start items-start gap-[6px]">
                                             <label
                                                 className="text-[14px] font-[500] text-[#344054]"
@@ -260,17 +226,6 @@ const ConfirmationModal = () => {
                                             />
                                         </div>
                                     </section>
-                                    <div className="flex gap-[32px] justify-end items-center mt-[40px] mb-[22px]">
-                                        <button
-                                            onClick={handleComplaint}
-                                            className="border-[1px] border-solid border-[#D0D5DD] rounded-[8px] px-[16px] py-[10px] w-[120px] text-[16px] font-[600]"
-                                        >
-                                            Shikoyat
-                                        </button>
-                                        <button onClick={handleCheckProduct} className="bg-[#17B26A] rounded-[8px] px-[16px] py-[10px] w-[120px] text-[#FFF] text-[16px] font-[600]">
-                                            Tasdiqlash
-                                        </button>
-                                    </div>
                                 </main>
                             </Dialog.Panel>
                         </div>
@@ -281,4 +236,4 @@ const ConfirmationModal = () => {
     );
 };
 
-export default ConfirmationModal;
+export default AppRovedModal;

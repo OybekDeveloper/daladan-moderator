@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { location, pointgreen, pointred } from '../imgs';
+import { location, pointgreen } from '../imgs';
 import './approved.scss'
 import axios from 'axios';
 import Loader from '../loader/loader';
+import AppRovedtModal from './approved-modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { ProductModal } from '../../reducer/event';
 const AppRoved = () => {
+    const { product } = useSelector(state => state.event)
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
+    const dispatch = useDispatch()
+    const handleProduct = (id) => {
+        dispatch(ProductModal(id))
+    }
     useEffect(() => {
-        // const body = document.querySelector(".app")
-        // if (product || openComplaint) {
-        //     body.classList.add("blur-effect")
-        // } else {
-        //     body.classList.remove("blur-effect")
-        // }
+        const body = document.querySelector(".app")
+        if (product) {
+            body.classList.add("blur-effect")
+        } else {
+            body.classList.remove("blur-effect")
+        }
         const token = localStorage.getItem("token");
         console.log(token);
         const fetchData = async () => {
@@ -39,15 +47,16 @@ const AppRoved = () => {
         }
         fetchData()
 
-    }, [])
+    }, [product])
+
     return (
         <main className='approved w-full mx-auto max-w-[1440px]'>
             {loading ? (
                 <Loader />
             ) : (
                 <section className='grid grid-cols-4 mt-[40px] gap-[32px] mb-[10px]'>
-                    {products?.map(item => (
-                        <div className="card-container relative">
+                    {products?.slice().reverse().map(item => (
+                        <div onClick={() => handleProduct((item?.id))} className="card-container relative">
                             <div className='absolute confirm flex justify-center items-center px-[8px] py-[2px] gap-[6px] top-[20px] left-[20px]'>
                                 <img src={pointgreen} alt="green" />
                                 <h1 className='text-[#067647] text-[14px] font-[500]'>Tasdiqlangan</h1>
@@ -64,14 +73,14 @@ const AppRoved = () => {
                                 </div>
                                 <div className='flex justify-between items-center pt-[24px]'>
                                     <p className='text-[#17B26A] font-[600] text-[18px]'>{item?.price} so’m</p>
-                                    <p className='text-[#000] font-[500] text-[18px]'>{item?.weight / 1000} tonna</p>
+                                    <p className='text-[#000] font-[500] text-[18px]'>{item?.weight} tonna</p>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </section>
             )}
-
+            <AppRovedtModal />
         </main>
     )
 }
