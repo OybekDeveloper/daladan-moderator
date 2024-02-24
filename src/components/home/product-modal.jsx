@@ -5,12 +5,14 @@ import { ProductModal, ReportModal } from "../../reducer/event";
 import { close } from "../imgs";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { InfoImg } from "../img-blurhash/info-img";
 const ConfirmationModal = () => {
     const { product, productId } = useSelector((state) => state.event);
     const dispatch = useDispatch();
     const [products, setProducts] = useState();
     const handleClose = () => {
         dispatch(ProductModal());
+        setProducts([])
     };
 
     const handleComplaint = () => {
@@ -37,6 +39,7 @@ const ConfirmationModal = () => {
                     },
                 });
                 dispatch(ProductModal());
+                setProducts([])
                 toast.success("Successfully verified!", {
                     position: "top-right",
                     autoClose: 3000,
@@ -146,12 +149,10 @@ const ConfirmationModal = () => {
                                             style={imgContainerStyle}
                                             className="mt-[16px] img-container w-full whitespace-nowrap overflow-x-auto overflow-hidden"
                                         >
-                                            {products?.imageList.map(item => (
-                                                <img
-                                                    className="mr-[34px] inline-flex rounded-[8px] w-[120px] h-[120px] object-cover"
-                                                    src={item}
-                                                    alt=""
-                                                />
+                                            {products?.imageList?.map(item => (
+                                                <div className="inline-flex rounded-[8px]">
+                                                    <InfoImg className="" src={item} />
+                                                </div>
                                             ))}
 
                                         </div>

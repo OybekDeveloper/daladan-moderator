@@ -8,7 +8,7 @@ import ComplaintModal from "./report-modal";
 import axios from "axios";
 import Loader from "../loader/loader";
 import ProductReportModal from "./report-modal";
-import { ProductImg } from "../img-blurhash";
+import { ProductImg } from "../img-blurhash/img-product";
 
 const Home = () => {
     const dispatch = useDispatch();
