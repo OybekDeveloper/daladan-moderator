@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import Home from '../home/home'
 import Login from '../login/login'
@@ -6,8 +6,13 @@ import './app.scss'
 import AppRoved from '../approved/approved'
 const App = () => {
     const navigate = useNavigate();
-    const [fetchData, setFetchData] = useState([]);
     const { pathname } = useLocation();
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if (!token) {
+            navigate('/login')
+        }
+    }, [])
     return (
         <div className={`app ${pathname !== '/login' && "max-w-[1440px] px-[80px] pt-[32px]"}  mx-auto w-full`}>
             <section className={`${pathname === '/login' && "hidden"} flex flex-col justify-start items-start gap-3`}>

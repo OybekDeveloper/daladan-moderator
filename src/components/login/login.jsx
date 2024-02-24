@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import loginback from './Section.png';
+import bg from './bg.svg'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './login.scss'
@@ -29,24 +30,24 @@ const Login = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // try {
-        //     const response = await axios.post(
-        //         "https://avtowatt.uz/api/v1/auth/login/admin",
-        //         JSON.stringify(formData),
-        //         {
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //             },
-        //         }
-        //     );
-        //     localStorage.setItem("token", response.data.token);
-        // } catch (err) {
-        //     setErrorMessage(err.response.data.errorMessage);
-        // }
-        // setFormData({
-        //     phone: '',
-        //     password: '',
-        // });
+        try {
+            const response = await axios.post(
+                "https://avtowatt.uz/api/v1/auth/login/admin",
+                JSON.stringify(formData),
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            localStorage.setItem("token", response.data.token);
+        } catch (err) {
+            setErrorMessage(err.response.data.errorMessage);
+        }
+        setFormData({
+            phone: '',
+            password: '',
+        });
     };
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -57,6 +58,7 @@ const Login = () => {
     return (
         <section className='login-page flex justify-center items-center w-full'>
             <div className='login w-1/2 flex flex-col justify-center items-center '>
+                <img className='absolute w-[770px] top-[0px] z-[-1]' src={bg} alt="" />
                 <h1 className='w-[360px] text-[30px] font-[600] text-center'>Tizimga kirish</h1>
                 <p className='w-[360px] text-[16px] font-[400] text-[#475467] text-center'>
                     Boshqaruv paneliga kirish uchun telefon raqamingiz va parolni kiriting
