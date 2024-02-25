@@ -62,16 +62,16 @@ const AppRovedModal = () => {
                     >
                         <div className="fixed inset-0  flex justify-center items-center">
                             <Dialog.Panel className="relative h-[90%] w-[65%] bg-[#fff] shadow-modal">
-                                <div
-                                    onClick={handleClose}
-                                    className="cursor-pointer bg-[#fff] pt-[20px] px-[80px] absolute w-full flex justify-end"
-                                >
-                                    <img src={close} alt="close" />
-                                </div>
                                 <main
-                                    className="img-container mx-auto w-full pt-[40px] px-[80px] h-full whitespace-nowrap overflow-y-auto"
+                                    className="img-container mx-auto w-full pt-[20px] px-[80px] h-full whitespace-nowrap overflow-y-auto"
                                 >
-                                    <section className="flex justify-between mt-[28px]">
+                                    <div
+                                        onClick={handleClose}
+                                        className="cursor-pointer bg-[#fff] w-full flex justify-end"
+                                    >
+                                        <img src={close} alt="close" />
+                                    </div>
+                                    <section className="flex justify-between mt-[10px]">
                                         <div className="w-[40%] flex flex-col justify-start items-start gap-[6px]">
                                             <label
                                                 className="text-[14px] font-[500] text-[#344054]"
@@ -80,7 +80,7 @@ const AppRovedModal = () => {
                                                 Mahsulot nomi
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.name}
                                                 disabled
@@ -94,17 +94,17 @@ const AppRovedModal = () => {
                                                 Kategoriya
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.category?.category?.name}
                                                 disabled
                                             />
                                         </div>
                                     </section>
-                                    <section className="w-full mt-[40px]">
+                                    <section className="w-full mt-[20px]">
                                         <h1>Mahsulot rasmlari</h1>
                                         <div
-                                            className="mt-[16px] img-container w-full whitespace-nowrap overflow-x-auto overflow-hidden"
+                                            className="mt-[10px] img-container w-full whitespace-nowrap overflow-x-auto overflow-hidden"
                                         >
                                             {products?.imageList?.map(item => (
                                                 <div key={crypto.randomUUID()} className="inline-flex rounded-[8px]">
@@ -114,7 +114,7 @@ const AppRovedModal = () => {
 
                                         </div>
                                     </section>
-                                    <section className="flex justify-between mt-[40px]">
+                                    <section className="flex justify-between mt-[20px]">
                                         <div className="w-[40%] flex flex-col justify-start items-start gap-[6px]">
                                             <label
                                                 className="text-[14px] font-[500] text-[#344054]"
@@ -123,7 +123,7 @@ const AppRovedModal = () => {
                                                 Narx
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={`${products?.price} so’m`}
                                                 disabled
@@ -137,14 +137,14 @@ const AppRovedModal = () => {
                                                 Miqdori
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={`${products?.weight} tonna`}
                                                 disabled
                                             />
                                         </div>
                                     </section>
-                                    <div className="w-full flex flex-col justify-start items-start mt-[40px]">
+                                    <div className="w-full flex flex-col justify-start items-start mt-[20px]">
                                         <label
                                             className="text-[14px] font-[500] text-[#344054]"
                                             htmlFor=""
@@ -152,13 +152,13 @@ const AppRovedModal = () => {
                                             Izoh
                                         </label>
                                         <textarea
-                                            className="w-full h-[150px] rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                            className="w-full h-[100px] rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                             type="text"
                                             placeholder={products?.description}
                                             disabled
                                         />
                                     </div>
-                                    <section className="flex justify-between mt-[40px]">
+                                    <section className="flex justify-between mt-[20px]">
                                         <div className="w-[40%] flex flex-col justify-start items-start gap-[6px]">
                                             <label
                                                 className="text-[14px] font-[500] text-[#344054]"
@@ -167,7 +167,7 @@ const AppRovedModal = () => {
                                                 Viloyat
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.region}
                                                 disabled
@@ -181,7 +181,7 @@ const AppRovedModal = () => {
                                                 Tuman
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.district}
                                                 disabled
@@ -197,7 +197,7 @@ const AppRovedModal = () => {
                                                 Qishloq
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.address}
                                                 disabled
@@ -211,7 +211,7 @@ const AppRovedModal = () => {
                                                 Aloqa uchun telefon raqam
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.phone}
                                                 disabled

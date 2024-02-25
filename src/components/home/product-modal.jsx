@@ -24,7 +24,7 @@ const ConfirmationModal = () => {
         const fetchData = async () => {
             try {
                 const token = localStorage.getItem("token");
-                 await axios({
+                await axios({
                     method: "PUT",
                     url: `https://avtowatt.uz/api/v1/products/${productId}`,
                     headers: {
@@ -98,16 +98,17 @@ const ConfirmationModal = () => {
                     >
                         <div className="fixed inset-0  flex justify-center items-center">
                             <Dialog.Panel className="relative h-[90%] w-[65%] bg-[#fff] shadow-modal">
-                                <div
-                                    onClick={handleClose}
-                                    className="cursor-pointer bg-[#fff] pt-[20px] px-[80px] absolute w-full flex justify-end"
-                                >
-                                    <img src={close} alt="close" />
-                                </div>
+
                                 <main
-                                    className="img-container mx-auto w-full pt-[40px] px-[80px] h-full whitespace-nowrap overflow-y-auto"
+                                    className="img-container mx-auto w-full pt-[20px] px-[80px] h-full whitespace-nowrap overflow-y-auto"
                                 >
-                                    <section className="flex justify-between mt-[28px]">
+                                    <div
+                                        onClick={handleClose}
+                                        className="cursor-pointer bg-[#fff]   w-full flex justify-end"
+                                    >
+                                        <img src={close} alt="close" />
+                                    </div>
+                                    <section className="flex justify-between mt-[10px]">
                                         <div className="w-[40%] flex flex-col justify-start items-start gap-[6px]">
                                             <label
                                                 className="text-[14px] font-[500] text-[#344054]"
@@ -116,7 +117,7 @@ const ConfirmationModal = () => {
                                                 Mahsulot nomi
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.name}
                                                 disabled
@@ -130,7 +131,7 @@ const ConfirmationModal = () => {
                                                 Kategoriya
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.category?.category?.name}
                                                 disabled
@@ -158,7 +159,7 @@ const ConfirmationModal = () => {
                                                 Narx
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={`${products?.price} so’m`}
                                                 disabled
@@ -172,9 +173,9 @@ const ConfirmationModal = () => {
                                                 Miqdori
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
-                                                placeholder={`${products?.weight / 1000} tonna`}
+                                                placeholder={`${products?.weight} tonna`}
                                                 disabled
                                             />
                                         </div>
@@ -187,7 +188,7 @@ const ConfirmationModal = () => {
                                             Izoh
                                         </label>
                                         <textarea
-                                            className="w-full h-[150px] rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                            className="w-full h-[100px] rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                             type="text"
                                             placeholder={products?.description}
                                             disabled
@@ -202,7 +203,7 @@ const ConfirmationModal = () => {
                                                 Viloyat
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.region}
                                                 disabled
@@ -216,7 +217,7 @@ const ConfirmationModal = () => {
                                                 Tuman
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.district}
                                                 disabled
@@ -232,7 +233,7 @@ const ConfirmationModal = () => {
                                                 Qishloq
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.address}
                                                 disabled
@@ -246,7 +247,7 @@ const ConfirmationModal = () => {
                                                 Aloqa uchun telefon raqam
                                             </label>
                                             <input
-                                                className="w-full rounded-[8px] px-[14px] py-[10px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
+                                                className="w-full rounded-[8px] px-[10px] py-[7px] bg-[#FFF] border-[1px] border-solid border-[#D0D5DD]"
                                                 type="text"
                                                 placeholder={products?.phone}
                                                 disabled

@@ -14,7 +14,7 @@ export const InfoImg = ({ src }) => {
     }, [src]);
 
     return (
-        <div className='mr-[34px]'>
+        <div className='mr-[34px] rounded-[8px] w-[80px] h-[80px] overflow-hidden'>
             <div
                 style={{
                     display: imgLoading ? 'none' : 'block',
@@ -24,8 +24,8 @@ export const InfoImg = ({ src }) => {
             >
                 <Blurhash
                     hash='LEHV6nWB2yk8pyo0adR*.7kCMdnj'
-                    width={120}
-                    height={120}
+                    width={80}
+                    height={80}
                     resolutionX={32}
                     resolutionY={32}
                     punch={1}
@@ -33,7 +33,7 @@ export const InfoImg = ({ src }) => {
             </div>
             <img
                 style={{ display: imgLoading ? 'block' : 'none' }}
-                className=" inline-flex rounded-[8px] w-[120px] h-[120px] object-cover"
+                className=" inline-flex rounded-[8px] w-[80px] h-[80px] object-cover"
                 src={src ? src : baseUrl}
                 alt={'img'}
             />
