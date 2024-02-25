@@ -46,6 +46,7 @@ const Home = () => {
         };
         fetchData();
     }, [product, reportId]);
+    console.log(product, reportId)
     return (
         <main className="w-full home mx-auto max-w-[1440px]">
             {loading ? (
@@ -65,7 +66,9 @@ const Home = () => {
                                         Tasdiqlanmagan
                                     </h1>
                                 </div>
-                                <ProductImg src={item?.photoUrl} />
+                                <div className="h-[240px]">
+                                    <ProductImg src={item?.photoUrl} />
+                                </div>
                                 <div className="card-content h-full p-[20px] flex flex-col">
                                     <div className="location flex justify-start items-center gap-[8px]">
                                         <img src={location} alt="location" />

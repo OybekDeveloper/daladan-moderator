@@ -25,7 +25,7 @@ export const ProductImg = ({ src }) => {
                 <Blurhash
                     hash='LEHV6nWB2yk8pyo0adR*.7kCMdnj'
                     width={'100%'}
-                    height={240}
+                    height={"240px"}
                     resolutionX={32}
                     resolutionY={32}
                     punch={1}
