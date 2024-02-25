@@ -14,32 +14,26 @@ const AppRovedModal = () => {
         setProducts([])
     };
 
-    const imgContainerStyle = {
-        scrollbarWidth: "thin",
-        scrollbarColor: "transparent transparent",
-        "&::-webkit-scrollbar": {
-            display: "none"
-        },
-    };
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                const response = await axios({
-                    method: "GET",
-                    url: `https://avtowatt.uz/api/v1/products/get-by-id/${productId}`,
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json",
-                    },
-                });
-                setProducts(response.data);
-                console.log(response.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchData();
+        if (productId) {
+            const fetchData = async () => {
+                try {
+                    const token = localStorage.getItem("token");
+                    const response = await axios({
+                        method: "GET",
+                        url: `https://avtowatt.uz/api/v1/products/get-by-id/${productId}`,
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                        },
+                    });
+                    setProducts(response.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchData();
+        }
     }, [productId]);
     return (
         <div>
@@ -75,8 +69,7 @@ const AppRovedModal = () => {
                                     <img src={close} alt="close" />
                                 </div>
                                 <main
-                                    style={imgContainerStyle}
-                                    className="mx-auto w-full pt-[40px] px-[80px] h-full whitespace-nowrap overflow-y-auto"
+                                    className="img-container mx-auto w-full pt-[40px] px-[80px] h-full whitespace-nowrap overflow-y-auto"
                                 >
                                     <section className="flex justify-between mt-[28px]">
                                         <div className="w-[40%] flex flex-col justify-start items-start gap-[6px]">
@@ -111,11 +104,10 @@ const AppRovedModal = () => {
                                     <section className="w-full mt-[40px]">
                                         <h1>Mahsulot rasmlari</h1>
                                         <div
-                                            style={imgContainerStyle}
                                             className="mt-[16px] img-container w-full whitespace-nowrap overflow-x-auto overflow-hidden"
                                         >
                                             {products?.imageList?.map(item => (
-                                                <div className="inline-flex rounded-[8px]">
+                                                <div key={crypto.randomUUID()} className="inline-flex rounded-[8px]">
                                                     <InfoImg className="" src={item} />
                                                 </div>
                                             ))}

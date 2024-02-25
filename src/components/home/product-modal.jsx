@@ -12,20 +12,14 @@ const ConfirmationModal = () => {
     const [products, setProducts] = useState();
     const handleClose = () => {
         dispatch(ProductModal());
-        setProducts([])
+        setProducts([]);
     };
 
     const handleComplaint = () => {
         dispatch(ProductModal());
         dispatch(ReportModal(productId));
     };
-    const imgContainerStyle = {
-        scrollbarWidth: "thin",
-        scrollbarColor: "transparent transparent",
-        "&::-webkit-scrollbar": {
-            display: "none"
-        },
-    };
+
     const handleCheckProduct = () => {
         const fetchData = async () => {
             try {
@@ -39,7 +33,7 @@ const ConfirmationModal = () => {
                     },
                 });
                 dispatch(ProductModal());
-                setProducts([])
+                setProducts([]);
                 toast.success("Successfully verified!", {
                     position: "top-right",
                     autoClose: 3000,
@@ -50,31 +44,32 @@ const ConfirmationModal = () => {
                     progress: undefined,
                     theme: "colored",
                 });
-                console.log(response);
             } catch (err) {
                 console.log(err);
             }
         };
         fetchData();
-    }
+    };
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                const response = await axios({
-                    method: "GET",
-                    url: `https://avtowatt.uz/api/v1/products/get-by-id/${productId}`,
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json",
-                    },
-                });
-                setProducts(response.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchData();
+        if (productId) {
+            const fetchData = async () => {
+                try {
+                    const token = localStorage.getItem("token");
+                    const response = await axios({
+                        method: "GET",
+                        url: `https://avtowatt.uz/api/v1/products/get-by-id/${productId}`,
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                        },
+                    });
+                    setProducts(response.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            fetchData();
+        }
     }, [productId]);
     return (
         <div>
@@ -110,8 +105,7 @@ const ConfirmationModal = () => {
                                     <img src={close} alt="close" />
                                 </div>
                                 <main
-                                    style={imgContainerStyle}
-                                    className="mx-auto w-full pt-[40px] px-[80px] h-full whitespace-nowrap overflow-y-auto"
+                                    className="img-container mx-auto w-full pt-[40px] px-[80px] h-full whitespace-nowrap overflow-y-auto"
                                 >
                                     <section className="flex justify-between mt-[28px]">
                                         <div className="w-[40%] flex flex-col justify-start items-start gap-[6px]">
@@ -146,15 +140,13 @@ const ConfirmationModal = () => {
                                     <section className="w-full mt-[40px]">
                                         <h1>Mahsulot rasmlari</h1>
                                         <div
-                                            style={imgContainerStyle}
                                             className="mt-[16px] img-container w-full whitespace-nowrap overflow-x-auto overflow-hidden"
                                         >
-                                            {products?.imageList?.map(item => (
-                                                <div className="inline-flex rounded-[8px]">
+                                            {products?.imageList?.map((item) => (
+                                                <div key={crypto.randomUUID()} className="inline-flex rounded-[8px]">
                                                     <InfoImg className="" src={item} />
                                                 </div>
                                             ))}
-
                                         </div>
                                     </section>
                                     <section className="flex justify-between mt-[40px]">
@@ -268,7 +260,10 @@ const ConfirmationModal = () => {
                                         >
                                             Shikoyat
                                         </button>
-                                        <button onClick={handleCheckProduct} className="bg-[#17B26A] rounded-[8px] px-[16px] py-[10px] w-[120px] text-[#FFF] text-[16px] font-[600]">
+                                        <button
+                                            onClick={handleCheckProduct}
+                                            className="bg-[#17B26A] rounded-[8px] px-[16px] py-[10px] w-[120px] text-[#FFF] text-[16px] font-[600]"
+                                        >
                                             Tasdiqlash
                                         </button>
                                     </div>

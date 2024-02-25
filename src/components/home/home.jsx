@@ -26,7 +26,6 @@ const Home = () => {
             body.classList.remove("blur-effect");
         }
         const token = localStorage.getItem("token");
-        console.log(token);
         const fetchData = async () => {
             try {
                 const response = await axios({
@@ -38,7 +37,6 @@ const Home = () => {
                     },
                 });
                 setProducts(response.data);
-                console.log(response.data);
             } catch (err) {
                 console.log(err);
             } finally {

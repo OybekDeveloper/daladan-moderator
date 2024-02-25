@@ -23,7 +23,6 @@ const AppRoved = () => {
             body.classList.remove("blur-effect")
         }
         const token = localStorage.getItem("token");
-        console.log(token);
         const fetchData = async () => {
             try {
                 const response = await axios({
@@ -36,7 +35,6 @@ const AppRoved = () => {
 
                 })
                 setProducts(response.data)
-                console.log(response.data)
             } catch (err) {
                 console.log(err)
             } finally {
@@ -57,7 +55,7 @@ const AppRoved = () => {
             ) : (
                 <section className='grid grid-cols-4 mt-[40px] gap-[32px] mb-[10px]'>
                     {products?.slice().reverse().map(item => (
-                        <div onClick={() => handleProduct((item?.id))} className="card-container relative">
+                        <div key={item.id} onClick={() => handleProduct((item?.id))} className="card-container relative">
                             <div className='absolute confirm flex justify-center items-center px-[8px] py-[2px] gap-[6px] top-[20px] left-[20px]'>
                                 <img src={pointgreen} alt="green" />
                                 <h1 className='text-[#067647] text-[14px] font-[500]'>Tasdiqlangan</h1>

@@ -46,7 +46,6 @@ const ProductReportModal = () => {
                     progress: undefined,
                     theme: "colored",
                 });
-                console.log(res)
                 dispatch(ReportModal());
                 setErrorMessage(null)
             } catch (err) {
@@ -56,14 +55,6 @@ const ProductReportModal = () => {
         }
         fetchData()
     }
-    const imgContainerStyle = {
-        scrollbarWidth: "thin", // For Firefox
-        scrollbarColor: "transparent transparent", // For Firefox
-
-        "&::-webkit-scrollbar": {
-            display: "none"
-        },
-    };
     return (
         <div>
             <Transition show={report} as={Fragment}>
@@ -91,7 +82,7 @@ const ProductReportModal = () => {
                     >
                         <div className="fixed inset-0 flex justify-center items-center">
                             <Dialog.Panel className="relative w-[65%] bg-[#fff] shadow-modal">
-                                <main style={imgContainerStyle} className="w-full px-[80px] py-[64px]">
+                                <main className="w-full px-[80px] py-[64px]">
                                     <div onClick={handleClose} className="cursor-pointer flex justify-end">
                                         <img src={close} alt="close" />
                                     </div>

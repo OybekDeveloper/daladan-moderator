@@ -12,7 +12,7 @@ const App = () => {
         if (!token) {
             navigate('/login')
         }
-    }, [])
+    }, [pathname])
     return (
         <div className={`app ${pathname !== '/login' && "max-w-[1440px] px-[80px] pt-[32px]"}  mx-auto w-full`}>
             <section className={`${pathname === '/login' && "hidden"} flex flex-col justify-start items-start gap-3`}>

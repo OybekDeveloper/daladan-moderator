@@ -14,10 +14,9 @@ export const InfoImg = ({ src }) => {
     }, [src]);
 
     return (
-        <div className='mr-[34px]' style={{ borderRadius: '8px' }}>
+        <div className='mr-[34px]'>
             <div
                 style={{
-                    borderRadius: '8px',
                     display: imgLoading ? 'none' : 'block',
                     objectFit: 'cover',
                 }}
@@ -27,7 +26,6 @@ export const InfoImg = ({ src }) => {
                     hash='LEHV6nWB2yk8pyo0adR*.7kCMdnj'
                     width={120}
                     height={120}
-                    borderRadius={8}
                     resolutionX={32}
                     resolutionY={32}
                     punch={1}
