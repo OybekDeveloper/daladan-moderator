@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { ProductModal } from "../../reducer/event";
 import { useEffect, useState } from "react";
 import "./home.scss";
-import ComplaintModal from "./report-modal";
 import axios from "axios";
 import Loader from "../loader/loader";
 import ProductReportModal from "./report-modal";

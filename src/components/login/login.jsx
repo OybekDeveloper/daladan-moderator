@@ -85,7 +85,8 @@ const Login = () => {
         if (token) {
             navigate('/')
         }
-    }, [moderator])
+        //eslint-disable-next-line
+    }, [moderator, pathname])
     return (
         <section className='login-page flex justify-center items-center w-full'>
             <div className='login w-1/2 flex flex-col justify-center items-center '>

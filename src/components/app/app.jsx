@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import Home from '../home/home'
 import Login from '../login/login'
@@ -12,6 +12,7 @@ const App = () => {
         if (!token) {
             navigate('/login')
         }
+        //eslint-disable-next-line
     }, [pathname])
     return (
         <div className={`app ${pathname !== '/login' && "max-w-[1440px] px-[80px] pt-[32px]"}  mx-auto w-full`}>

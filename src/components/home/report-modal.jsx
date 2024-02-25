@@ -28,7 +28,7 @@ const ProductReportModal = () => {
         const fetchData = async () => {
             try {
                 const token = localStorage.getItem("token")
-                const res = await axios({
+                await axios({
                     method: "POST",
                     url: `https://avtowatt.uz/api/v1/report/create`,
                     headers: {

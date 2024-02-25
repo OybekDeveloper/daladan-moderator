@@ -24,7 +24,7 @@ const ConfirmationModal = () => {
         const fetchData = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios({
+                 await axios({
                     method: "PUT",
                     url: `https://avtowatt.uz/api/v1/products/${productId}`,
                     headers: {
